@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 16,
+            "activePatchIndex": 20,
             "patches": [
                 {
                     "date": 1753806288626,
@@ -72,6 +72,22 @@
                 {
                     "date": 1753808216550,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -845,9 +845,9 @@\n             <li class=\"blog-post-item\">\n               <a href=\"#\">\n \n                 <figure class=\"blog-banner-box\">\n-                  <img src=\"./assets/images/blog-2.jpg\" alt=\"The Art of Latency: How We Cut NLP Inference Time by 40%\" loading=\"lazy\">\n+                  <img src=\"./assets/images/Screenshot 2025-07-29 at 10.26.20 PM.png\" alt=\"The Art of Latency: How We Cut NLP Inference Time by 40%\" loading=\"lazy\">\n                 </figure>\n \n                 <div class=\"blog-content\">\n \n"
+                },
+                {
+                    "date": 1753812757034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     - favicon\n   -->\n   <link rel=\"shortcut icon\" href=\"./assets/images/logo.ico\" type=\"image/x-icon\">\n \n-  <!--\n+  <!--blog\n     - custom css link\n   -->\n   <link rel=\"stylesheet\" href=\"./assets/css/style.css\">\n \n@@ -814,9 +814,10 @@\n \n           <ul class=\"blog-posts-list\">\n \n             <li class=\"blog-post-item\">\n-              <a href=\"#\">\n+              <a href=\"https://medium.com/@sourabhrajdev25/more-than-just-moving-boxes-our-monolith-to-microservices-journey-on-aws-8b6894cb76dc\n+\">\n \n                 <figure class=\"blog-banner-box\">\n                   <img src=\"./assets/images/Screenshot 2025-07-29 at 10.25.25 PM.png\" alt=\"Architecting for Scale: Lessons from Migrating to Microservices on AWS\" loading=\"lazy\">\n                 </figure>\n"
+                },
+                {
+                    "date": 1753812779191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -843,9 +843,10 @@\n               </a>\n             </li>\n \n             <li class=\"blog-post-item\">\n-              <a href=\"#\">\n+              <a href=\"https://medium.com/@sourabhrajdev25/in-the-world-of-ai-your-model-can-be-the-smartest-in-the-room-but-if-its-slow-it-s-useless-d7e9e923cf0c\n+\">\n \n                 <figure class=\"blog-banner-box\">\n                   <img src=\"./assets/images/Screenshot 2025-07-29 at 10.26.20 PM.png\" alt=\"The Art of Latency: How We Cut NLP Inference Time by 40%\" loading=\"lazy\">\n                 </figure>\n"
+                },
+                {
+                    "date": 1753812800377,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -843,10 +843,9 @@\n               </a>\n             </li>\n \n             <li class=\"blog-post-item\">\n-              <a href=\"https://medium.com/@sourabhrajdev25/in-the-world-of-ai-your-model-can-be-the-smartest-in-the-room-but-if-its-slow-it-s-useless-d7e9e923cf0c\n-\">\n+              <a href=\"https://medium.com/@sourabhrajdev25/in-the-world-of-ai-your-model-can-be-the-smartest-in-the-room-but-if-its-slow-it-s-useless-d7e9e923cf0c\">\n \n                 <figure class=\"blog-banner-box\">\n                   <img src=\"./assets/images/Screenshot 2025-07-29 at 10.26.20 PM.png\" alt=\"The Art of Latency: How We Cut NLP Inference Time by 40%\" loading=\"lazy\">\n                 </figure>\n@@ -872,9 +871,9 @@\n               </a>\n             </li>\n \n             <li class=\"blog-post-item\">\n-              <a href=\"#\">\n+              <a href=\"building-etl-pipelines-that-matter-with-spark-1058b8c66994\">\n \n                 <figure class=\"blog-banner-box\">\n                   <img src=\"./assets/images/blog-3.jpg\" alt=\"From Raw Data to Actionable Insights with Apache Spark\" loading=\"lazy\">\n                 </figure>\n"
+                },
+                {
+                    "date": 1753812813300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -871,9 +871,9 @@\n               </a>\n             </li>\n \n             <li class=\"blog-post-item\">\n-              <a href=\"building-etl-pipelines-that-matter-with-spark-1058b8c66994\">\n+              <a href=\"https://medium.com/@sourabhrajdev25/your-data-is-telling-a-story-are-you-listening-building-etl-pipelines-that-matter-with-spark-1058b8c66994\">\n \n                 <figure class=\"blog-banner-box\">\n                   <img src=\"./assets/images/blog-3.jpg\" alt=\"From Raw Data to Actionable Insights with Apache Spark\" loading=\"lazy\">\n                 </figure>\n"
                 }
             ],
             "date": 1753806288625,
