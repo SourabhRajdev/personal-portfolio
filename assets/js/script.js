@@ -157,3 +157,72 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+// contact form submission handler using Netlify-compatible version
+form.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  const submitBtn = form.querySelector("button[type='submit']");
+  const originalContent = submitBtn.innerHTML;
+
+  // Show loading state
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  submitBtn.disabled = true;
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    });
+
+    // Success UI
+    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    showToast("✅ Message sent successfully!");
+    form.reset();
+
+    setTimeout(() => {
+      submitBtn.innerHTML = originalContent;
+      submitBtn.disabled = false;
+    }, 3000);
+
+  } catch (error) {
+    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+    showToast("🚫 Network error: " + (error?.message || "Unknown"));
+    setTimeout(() => {
+      submitBtn.innerHTML = originalContent;
+      submitBtn.disabled = false;
+    }, 3000);
+  }
+});
+
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.innerText = message;
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #111;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  `;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+  });
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(20px)";
+    setTimeout(() => document.body.removeChild(toast), 300);
+  }, 4000);
+}
