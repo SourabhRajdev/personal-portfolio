@@ -1233,6 +1233,17 @@
             .cozy-panel{ 
                 width:86vw; 
             }
+            /* --- Mobile-first comfort tweaks (tablets & phones) --- */
+            .hero-actions .btn { width: 100%; justify-content: center; }
+            .section-title { font-size: 2rem; }
+            .section-description { font-size: 1rem; }
+            .hero-description { font-size: 1.05rem; line-height: 1.7; margin-left: auto; margin-right: auto; }
+            .contact-form { padding: 1.25rem; }
+            .form-input, .form-textarea { font-size: 1rem; }
+            .input-icon { font-size: 1rem; left: 12px; }
+            .input-with-icon { padding-left: 46px; }
+            .hero-image img.hero-profile-img { width: 82vw !important; height: auto !important; max-width: 360px !important; border-radius: 16px !important; }
+            .btn { padding: 0.9rem 1.1rem; }
         }
 
         @media (max-width: 480px) {
@@ -1247,6 +1258,17 @@
             .section {
                 padding: 3rem 1rem;
             }
+            /* --- iPhone-optimized tuning --- */
+            .hero-title { font-size: 2.1rem; line-height: 1.15; }
+            .hero-description { font-size: 1rem; }
+            .hero-actions { gap: 0.75rem; }
+            .hero-actions .btn { width: 100%; }
+            .input-icon { font-size: 0.95rem; left: 10px; }
+            .input-with-icon { padding-left: 44px; }
+            .reading-progress { bottom: calc(1rem + env(safe-area-inset-bottom)); right: 1rem; }
+            .cozy-widget { bottom: calc(8rem + env(safe-area-inset-bottom)); right: 1rem; }
+            .section { padding: 2.5rem 1rem; }
+            .nav-container { padding: 0 0.75rem; }
         }
 
         /* Utility Classes */
