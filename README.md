@@ -34,7 +34,7 @@ Welcome to my personal portfolio website! This fully responsive site showcases m
 
 ### Desktop View
 
-![Desktop Screenshot](./screenshots/desktop.png "Desktop View")
+![Desktop Screenshot](./website-demo-image/desktop1.png "Desktop View")
 
 ### Mobile View
 
