@@ -123,8 +123,6 @@ This site is deployed on Netlify for fast and secure hosting.
 3. Configure build settings (if using a build process).
 4. Deploy and get your live site URL.
 
-**Live Site URL:** [https://your-netlify-site.netlify.app](https://your-netlify-site.netlify.app) *(Update this after deployment)*
-
 ---
 
 ## Keys & Privacy
