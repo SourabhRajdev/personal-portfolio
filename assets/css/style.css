@@ -3,11 +3,6 @@
 \*-----------------------------------*/
 
 
-/**
- * copyright 2022 @codewithsadee
- */
-
-
 
 
 
@@ -1878,5 +1873,91 @@ textarea.form-input::-webkit-resizer { display: none; }
 	 */
 
   .timeline-text { max-width: 700px; }
+
+
+  /* ====== Performance & UX Enhancements (append-only) ====== */
+
+/* Smooth scrolling (respects reduced motion below) */
+html { scroll-behavior: smooth; }
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Better font rendering on most browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hint the GPU for commonly animated elements */
+.project-item > a:hover img,
+.testimonials-avatar-box,
+.navbar-link:hover,
+.modal-container.active .testimonials-modal {
+  will-change: transform, opacity;
+}
+
+/* Faster initial render for offscreen images */
+.project-img img,
+.blog-banner-box img,
+.clients-item img {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 200px; /* fallback size to prevent layout shift */
+  image-rendering: auto;
+}
+
+/* Make all images scale predictably and avoid layout jank */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Consistent, snappy transitions site‑wide */
+:root {
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+a, button, .project-img::before, .project-item-icon-box, .blog-banner-box img,
+.navbar-link, .form-btn, .content-card, .testimonials-modal {
+  transition: transform var(--transition-1), opacity var(--transition-1), color var(--transition-1),
+              background var(--transition-1), box-shadow var(--transition-1);
+}
+
+/* Improve focus visibility (a11y) without changing your theme */
+:focus-visible {
+  outline: 2px dashed var(--orange-yellow-crayola);
+  outline-offset: 3px;
+}
+
+/* Reduce paint work on large scrolling areas */
+.has-scrollbar,
+.clients-list,
+.testimonials-list {
+  contain: content;
+}
+
+/* Prevent oversized long words/URLs from breaking layout */
+.about-text p,
+.blog-text,
+.timeline-text,
+.contact-info :is(.contact-link, time, address) {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Optional: Slightly larger tap targets on mobile */
+@media (max-width: 580px) {
+  .navbar-link { padding: 22px 10px; }
+  .form-btn { padding: 15px 22px; }
+}
+
+/* Security & performance headers are set in Netlify via _headers; this block complements them */
 
 }

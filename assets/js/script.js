@@ -1,228 +1,187 @@
 'use strict';
-
-
-
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
-
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
-
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
-
-// modal toggle function
-const testimonialsModalFunc = function () {
-  modalContainer.classList.toggle("active");
-  overlay.classList.toggle("active");
-}
-
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// add click event to modal close button
-modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-overlay.addEventListener("click", testimonialsModalFunc);
-
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
+document.addEventListener("DOMContentLoaded", () => {
+  const elementToggleFunc = function (elem) {
+    requestAnimationFrame(() => {
+      elem.classList.toggle("active");
+    });
   }
 
-}
+  const sidebar = document.querySelector("[data-sidebar]");
+  const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+  sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+  const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
+  const testimonialsItemLength = testimonialsItem.length;
+  const modalContainer = document.querySelector("[data-modal-container]");
+  const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+  const overlay = document.querySelector("[data-overlay]");
+  const modalImg = document.querySelector("[data-modal-img]");
+  const modalTitle = document.querySelector("[data-modal-title]");
+  const modalText = document.querySelector("[data-modal-text]");
 
-for (let i = 0; i < filterBtn.length; i++) {
+  const testimonialsModalFunc = function () {
+    requestAnimationFrame(() => {
+      modalContainer.classList.toggle("active");
+      overlay.classList.toggle("active");
+    });
+  }
 
-  filterBtn[i].addEventListener("click", function () {
+  for (const item of testimonialsItem) {
+    item.addEventListener("click", function () {
+      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+      testimonialsModalFunc();
+    });
+  }
 
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
+  modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+  overlay.addEventListener("click", testimonialsModalFunc);
 
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
+  const select = document.querySelector("[data-select]");
+  const selectItems = document.querySelectorAll("[data-select-item]");
+  const selectValue = document.querySelector("[data-selecct-value]");
+  const filterBtn = document.querySelectorAll("[data-filter-btn]");
+  const filterBtnLength = filterBtn.length;
 
-  });
+  select.addEventListener("click", function () { elementToggleFunc(this); });
 
-}
+  for (const item of selectItems) {
+    item.addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      elementToggleFunc(select);
+      filterFunc(selectedValue);
+    });
+  }
 
+  const filterItems = document.querySelectorAll("[data-filter-item]");
+  const filterItemsLength = filterItems.length;
 
+  const filterFunc = function (selectedValue) {
+    for (let i = 0; i < filterItemsLength; i++) {
+      if (selectedValue === "all" || selectedValue === filterItems[i].dataset.category) {
+        filterItems[i].classList.add("active");
+      } else {
+        filterItems[i].classList.remove("active");
+      }
+    }
+  }
 
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
+  let lastClickedBtn = filterBtn[0];
+  for (let i = 0; i < filterBtnLength; i++) {
+    filterBtn[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      selectValue.innerText = this.innerText;
+      filterFunc(selectedValue);
+      lastClickedBtn.classList.remove("active");
+      this.classList.add("active");
+      lastClickedBtn = this;
+    });
+  }
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
+  const form = document.querySelector("[data-form]");
+  const formInputs = document.querySelectorAll("[data-form-input]");
+  const formBtn = document.querySelector("[data-form-btn]");
 
-    // check form validation
+  function debounce(fn, delay) {
+    let timer;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delay);
+    }
+  }
+
+  const validateForm = debounce(function () {
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
+  }, 300);
 
-  });
-}
+  for (const input of formInputs) {
+    input.addEventListener("input", validateForm);
+  }
 
+  const navigationLinks = document.querySelectorAll("[data-nav-link]");
+  const navigationLinksLength = navigationLinks.length;
+  const pages = document.querySelectorAll("[data-page]");
+  const pagesLength = pages.length;
 
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+  for (const navLink of navigationLinks) {
+    navLink.addEventListener("click", function () {
+      for (let i = 0; i < pagesLength; i++) {
+        if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+          pages[i].classList.add("active");
+          navigationLinks[i].classList.add("active");
+          window.scrollTo(0, 0);
+        } else {
+          pages[i].classList.remove("active");
+          navigationLinks[i].classList.remove("active");
+        }
       }
-    }
-
-  });
-}
-
-// contact form submission handler using Netlify-compatible version
-form.addEventListener("submit", async function (event) {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-  const submitBtn = form.querySelector("button[type='submit']");
-  const originalContent = submitBtn.innerHTML;
-
-  // Show loading state
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  submitBtn.disabled = true;
-
-  try {
-    await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
     });
+  }
 
-    // Success UI
-    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    showToast("✅ Message sent successfully!");
-    form.reset();
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const submitBtn = form.querySelector("button[type='submit']");
+    const originalContent = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+      });
+      submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+      showToast("✅ Message sent successfully!");
+      form.reset();
+      setTimeout(() => {
+        submitBtn.innerHTML = originalContent;
+        submitBtn.disabled = false;
+      }, 3000);
+    } catch (error) {
+      submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
+      showToast("🚫 Network error: " + (error?.message || "Unknown"));
+      setTimeout(() => {
+        submitBtn.innerHTML = originalContent;
+        submitBtn.disabled = false;
+      }, 3000);
+    }
+  });
 
+  function showToast(message) {
+    const toast = document.createElement("div");
+    toast.innerText = message;
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #111;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+    `;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => {
+      toast.style.opacity = "1";
+      toast.style.transform = "translateY(0)";
+    });
     setTimeout(() => {
-      submitBtn.innerHTML = originalContent;
-      submitBtn.disabled = false;
-    }, 3000);
-
-  } catch (error) {
-    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
-    showToast("🚫 Network error: " + (error?.message || "Unknown"));
-    setTimeout(() => {
-      submitBtn.innerHTML = originalContent;
-      submitBtn.disabled = false;
-    }, 3000);
+      toast.style.opacity = "0";
+      toast.style.transform = "translateY(20px)";
+      setTimeout(() => document.body.removeChild(toast), 300);
+    }, 4000);
   }
 });
-
-function showToast(message) {
-  const toast = document.createElement("div");
-  toast.innerText = message;
-  toast.style.cssText = `
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #111;
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    z-index: 9999;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-  `;
-  document.body.appendChild(toast);
-  requestAnimationFrame(() => {
-    toast.style.opacity = "1";
-    toast.style.transform = "translateY(0)";
-  });
-  setTimeout(() => {
-    toast.style.opacity = "0";
-    toast.style.transform = "translateY(20px)";
-    setTimeout(() => document.body.removeChild(toast), 300);
-  }, 4000);
-}
