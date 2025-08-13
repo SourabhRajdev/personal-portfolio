@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preload" href="fonts/main.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdn.example.com" crossorigin>
+    <meta http-equiv="Cache-Control" content="public, max-age=86400">
+    <style>
+      /* minimal above-the-fold styles */
+      body { font-family: sans-serif; margin: 0; }
+    </style>
+    <link rel="stylesheet" href="full.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="full.css"></noscript>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7046029785305640"
-     crossorigin="anonymous"></script>
+    <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7046029785305640" crossorigin="anonymous" defer></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HBG5GLTXL"></script>
+<script src="https://www.googletagmanager.com/gtag/js?id=G-4HBG5GLTXL" defer></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -1429,6 +1437,10 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
+        .animated {
+            will-change: transform, opacity;
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -2054,7 +2066,7 @@
                     <div class="blog-image" aria-hidden="true">
                         <span class="badge">Architecture</span>
                         <a href="#" class="blog-cover-link">
-                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" loading="lazy" />
                         </a>
                         <!-- Subtle Medium mark -->
                         <div class="blog-favicon" title="Medium">M</div>
@@ -2085,7 +2097,7 @@
                     <div class="blog-image" aria-hidden="true">
                         <span class="badge">AI/ML</span>
                         <a href="#" class="blog-cover-link">
-                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" loading="lazy" />
                         </a>
                         <div class="blog-favicon" title="Medium">M</div>
                     </div>
@@ -2115,7 +2127,7 @@
                     <div class="blog-image" aria-hidden="true">
                         <span class="badge">Data</span>
                         <a href="#" class="blog-cover-link">
-                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" loading="lazy" />
                         </a>
                         <div class="blog-favicon" title="Medium">M</div>
                     </div>
