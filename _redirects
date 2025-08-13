@@ -1,1 +1,5 @@
+# Redirect all HTTP traffic to HTTPS
 http://* https://:splat 301!
+
+# Redirect the default Netlify subdomain to your custom domain
+https://*.netlify.app/* https://sourabhrajdev.space/:splat 301!
