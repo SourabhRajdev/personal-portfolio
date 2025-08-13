@@ -1,0 +1,22 @@
+{
+    "sourceFile": "_headers",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1755064225842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755064350268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,22 @@\n /*\n   Content-Security-Policy: upgrade-insecure-requests\n   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload\n-  X-Frame-Options: DENY\n   X-Content-Type-Options: nosniff\n-  Referrer-Policy: no-referrer-when-downgrade\n\\ No newline at end of file\n+  Referrer-Policy: no-referrer-when-downgrade\n+\n+# Long‑cache static assets (HTML stays short-cache)\n+# Adjust paths if your assets are under /assets/...\n+/assets/*\n+  Cache-Control: public, max-age=31536000, immutable\n+\n+/*.css\n+  Cache-Control: public, max-age=31536000, immutable\n+\n+/*.js\n+  Cache-Control: public, max-age=31536000, immutable\n+\n+/*.woff2\n+  Cache-Control: public, max-age=31536000, immutable\n+\n+/*.webp\n+  Cache-Control: public, max-age=31536000, immutable\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1755064225842,
+            "name": "Commit-0",
+            "content": "/*\n  Content-Security-Policy: upgrade-insecure-requests\n  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload\n  X-Frame-Options: DENY\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: no-referrer-when-downgrade"
+        }
+    ]
+}

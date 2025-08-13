@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1755061459601,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1755064200813,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,1 +1,5 @@\n-http://* https://:splat 301!\n\\ No newline at end of file\n+# Redirect all HTTP traffic to HTTPS\n+http://* https://:splat 301!\n+\n+# Redirect the default Netlify subdomain to your custom domain\n+https://*.netlify.app/* https://sourabhrajdev.space/:splat 301!\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1755061459601,

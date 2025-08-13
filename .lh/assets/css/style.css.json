@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1755062955453,
@@ -12,6 +12,10 @@
                 {
                     "date": 1755063067176,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1873,5 +1873,91 @@\n \t */\n \n   .timeline-text { max-width: 700px; }\n \n+\n+  /* ====== Performance & UX Enhancements (append-only) ====== */\n+\n+/* Smooth scrolling (respects reduced motion below) */\n+html { scroll-behavior: smooth; }\n+\n+/* Respect users who prefer reduced motion */\n+@media (prefers-reduced-motion: reduce) {\n+  * {\n+    animation: none !important;\n+    transition: none !important;\n+    scroll-behavior: auto !important;\n+  }\n+}\n+\n+/* Better font rendering on most browsers */\n+body {\n+  -webkit-font-smoothing: antialiased;\n+  -moz-osx-font-smoothing: grayscale;\n+  text-rendering: optimizeLegibility;\n+}\n+\n+/* Hint the GPU for commonly animated elements */\n+.project-item > a:hover img,\n+.testimonials-avatar-box,\n+.navbar-link:hover,\n+.modal-container.active .testimonials-modal {\n+  will-change: transform, opacity;\n+}\n+\n+/* Faster initial render for offscreen images */\n+.project-img img,\n+.blog-banner-box img,\n+.clients-item img {\n+  content-visibility: auto;\n+  contain-intrinsic-size: 300px 200px; /* fallback size to prevent layout shift */\n+  image-rendering: auto;\n+}\n+\n+/* Make all images scale predictably and avoid layout jank */\n+img {\n+  max-width: 100%;\n+  height: auto;\n+}\n+\n+/* Consistent, snappy transitions site‑wide */\n+:root {\n+  --ease: cubic-bezier(.2,.7,.2,1);\n+}\n+\n+a, button, .project-img::before, .project-item-icon-box, .blog-banner-box img,\n+.navbar-link, .form-btn, .content-card, .testimonials-modal {\n+  transition: transform var(--transition-1), opacity var(--transition-1), color var(--transition-1),\n+              background var(--transition-1), box-shadow var(--transition-1);\n+}\n+\n+/* Improve focus visibility (a11y) without changing your theme */\n+:focus-visible {\n+  outline: 2px dashed var(--orange-yellow-crayola);\n+  outline-offset: 3px;\n+}\n+\n+/* Reduce paint work on large scrolling areas */\n+.has-scrollbar,\n+.clients-list,\n+.testimonials-list {\n+  contain: content;\n+}\n+\n+/* Prevent oversized long words/URLs from breaking layout */\n+.about-text p,\n+.blog-text,\n+.timeline-text,\n+.contact-info :is(.contact-link, time, address) {\n+  overflow-wrap: anywhere;\n+  word-break: break-word;\n+}\n+\n+/* Optional: Slightly larger tap targets on mobile */\n+@media (max-width: 580px) {\n+  .navbar-link { padding: 22px 10px; }\n+  .form-btn { padding: 15px 22px; }\n+}\n+\n+/* Security & performance headers are set in Netlify via _headers; this block complements them */\n+\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1755064317386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,11 @@\n    */\n \n   /* gradient */\n \n+<link rel=\"preload\" href=\"/assets/css/style.css\" as=\"style\">\n+<link rel=\"stylesheet\" href=\"/assets/css/style.css\" media=\"all\">\n+\n   --bg-gradient-onyx: linear-gradient(\n     to bottom right, \n     hsl(240, 1%, 25%) 3%, \n     hsl(0, 0%, 19%) 97%\n"
                 }
             ],
             "date": 1755062955453,
