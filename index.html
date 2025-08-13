@@ -714,6 +714,122 @@
             color: var(--accent-secondary);
         }
 
+        /* Blogs Section */
+        .blogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+        }
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .blog-image::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            background: radial-gradient(60% 60% at 30% 30%, rgba(255,255,255,.18), transparent 60%);
+            mix-blend-mode: screen;
+        }
+        .blog-image .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--bg-card);
+            color: var(--accent-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 999px;
+            padding: .25rem .6rem;
+            font-size: .75rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-sm);
+        }
+        .blog-content {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+        .blog-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 .5rem;
+            line-height: 1.35;
+        }
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: .975rem;
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-muted);
+            font-size: .85rem;
+            margin-top: .25rem;
+        }
+        .blog-actions {
+            display: flex;
+            gap: .75rem;
+            margin-top: .75rem;
+        }
+        .blog-link, .blog-read {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .55rem .9rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .9rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            transition: all .2s ease;
+        }
+        .blog-link:hover, .blog-read:hover {
+            background: var(--accent-primary);
+            color: #fff;
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        .blog-favicon {
+            width: 22px;
+            height: 22px;
+            background: #12100e;
+            border-radius: 6px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#fff;
+            font-size:.8rem;
+            font-weight:800;
+            letter-spacing:.02em;
+        }
+        @media (max-width: 480px) {
+            .blog-image { height: 160px; }
+            .blog-title { font-size: 1.05rem; }
+        }
+
         /* Contact Section */
         .contact-section {
             background: var(--bg-secondary);
@@ -933,6 +1049,9 @@
             display: block; 
             margin-bottom: .5rem; 
         }
+
+
+        
 
         /* Footer */
         .footer {
@@ -1420,21 +1539,22 @@
     </style>
 </head>
 <body>
-    <!-- Greeting Audio Consent Popup -->
+    <!-- Greeting Audio Consent Popup
    <div id="musicModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         background: rgba(0,0,0,0.85); color: white; display: none; flex-direction: column;
         align-items: center; justify-content: center; z-index: 9999;">
         <h2 style="margin-bottom: 1rem;">👋 Welcome!</h2>
+
         <p style="margin-bottom: 2rem;">Would you like to hear a short intro as you explore?</p>
         <button onclick="playMusic()" class="btn btn-primary" style="margin-bottom: 1rem;">Yes, Play Greeting</button>
         <button onclick="closeModal()" class="btn btn-secondary">No Thanks</button>
-    </div>
+    </div> -->
 
-    <!-- Background Greeting Audio -->
+    <!-- Background Greeting Audio
     <audio id="bgMusic" preload="none">
         <source src="./assets/music/ElevenLabs_Text_to_Speech_audio (1).mp3" type="audio/mpeg">
         <source src="./assets/music/hip-hop-drum-loop-ride-sidestick-beat-102-bpm-265594.mp3" type="audio/mpeg">
-    </audio>
+    </audio> -->
 
     <!-- Mute/Unmute Toggle -->
     <button id="muteToggle" onclick="toggleMute()" class="btn btn-secondary"
@@ -1458,6 +1578,7 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#blogs" class="nav-link">Blogs</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
 
@@ -1501,15 +1622,15 @@
                         <span class="stat-label">Projects Delivered</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">30%</span>
-                        <span class="stat-label">Lower Latency</span>
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-label">Lines of Code Shipped with ❤️</span>
                     </div>
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">
+                    <a href="./assets/Projects/ResumeLive_pdf.pdf" class="btn btn-primary">
                         <i class="fas fa-rocket"></i>
-                        View My Work
+                        Download Resume
                     </a>
                     <a href="#contact" class="btn btn-secondary">
                         <i class="fas fa-coffee"></i>
@@ -1916,6 +2037,115 @@
         </div>
     </section>
 
+    <!-- ===== Blogs Section ===== -->
+    <section class="section" id="blogs" aria-labelledby="blogs-title">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">Insights &amp; Writing</div>
+                <h2 class="section-title" id="blogs-title">Blogs</h2>
+                <p class="section-description">
+                    A selection of my recent articles on architecture, AI performance, and data engineering.
+                </p>
+            </div>
+
+            <div class="blogs-grid">
+                <!-- Blog 1 -->
+                <article class="blog-card fade-in">
+                    <div class="blog-image" aria-hidden="true">
+                        <span class="badge">Architecture</span>
+                        <a href="#" class="blog-cover-link">
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                        </a>
+                        <!-- Subtle Medium mark -->
+                        <div class="blog-favicon" title="Medium">M</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">
+                            <a class="project-link" href="https://medium.com/@sourabhrajdev25/more-than-just-moving-boxes-our-monolith-to-microservices-journey-on-aws-8b6894cb76dc" target="_blank" rel="noopener noreferrer">
+                                More Than Just Moving Boxes: Our Monolith to Microservices Journey on AWS
+                            </a>
+                        </h3>
+                        <p class="blog-excerpt">
+                            A practical walkthrough of decomposing a monolith into microservices on AWS—trade‑offs, patterns, and the migration playbook that actually works.
+                        </p>
+                        <div class="blog-meta">
+                            <span>~7 min read</span>
+                            <time datetime="2024-12">Dec 2024</time>
+                        </div>
+                        <div class="blog-actions">
+                            <a class="blog-read" href="https://medium.com/@sourabhrajdev25/more-than-just-moving-boxes-our-monolith-to-microservices-journey-on-aws-8b6894cb76dc" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Read on Medium
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog 2 -->
+                <article class="blog-card fade-in">
+                    <div class="blog-image" aria-hidden="true">
+                        <span class="badge">AI/ML</span>
+                        <a href="#" class="blog-cover-link">
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                        </a>
+                        <div class="blog-favicon" title="Medium">M</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">
+                            <a class="project-link" href="https://medium.com/@sourabhrajdev25/in-the-world-of-ai-your-model-can-be-the-smartest-in-the-room-but-if-its-slow-it-s-useless-d7e9e923cf0c" target="_blank" rel="noopener noreferrer">
+                                In the World of AI, Your Model Can Be the Smartest… but If It’s Slow, It’s Useless
+                            </a>
+                        </h3>
+                        <p class="blog-excerpt">
+                            Why latency is a product feature. Techniques for shaving milliseconds off inference while keeping accuracy and users happy.
+                        </p>
+                        <div class="blog-meta">
+                            <span>~6 min read</span>
+                            <time datetime="2025-01">Jan 2025</time>
+                        </div>
+                        <div class="blog-actions">
+                            <a class="blog-read" href="https://medium.com/@sourabhrajdev25/in-the-world-of-ai-your-model-can-be-the-smartest-in-the-room-but-if-its-slow-it-s-useless-d7e9e923cf0c" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Read on Medium
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog 3 -->
+                <article class="blog-card fade-in">
+                    <div class="blog-image" aria-hidden="true">
+                        <span class="badge">Data</span>
+                        <a href="#" class="blog-cover-link">
+                            <img src="./assets/Projects/Screenshot 2025-08-13 at 3.23.08 PM.png" alt="Blog cover image" class="blog-cover-img" />
+                        </a>
+                        <div class="blog-favicon" title="Medium">M</div>
+                    </div>
+                    <div class="blog-content">
+                        <h3 class="blog-title">
+                            <a class="project-link" href="https://medium.com/@sourabhrajdev25/your-data-is-telling-a-story-are-you-listening-building-etl-pipelines-that-matter-with-spark-1058b8c66994" target="_blank" rel="noopener noreferrer">
+                                Your Data Is Telling a Story—Are You Listening? ETL Pipelines That Matter with Spark
+                            </a>
+
+
+                        </h3>
+                        <p class="blog-excerpt">
+                            Building reliable, observable ETL with Apache Spark—from data contracts to monitoring—so insights ship on time.
+                        </p>
+                        <div class="blog-meta">
+                            <span>~8 min read</span>
+                            <time datetime="2024-11">Nov 2024</time>
+                        </div>
+                        <div class="blog-actions">
+                            <a class="blog-read" href="https://medium.com/@sourabhrajdev25/your-data-is-telling-a-story-are-you-listening-building-etl-pipelines-that-matter-with-spark-1058b8c66994" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i> Read on Medium
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- ===== End Blogs Section ===== -->
+
     <!-- Contact Section -->
     <section class="section contact-section" id="contact">
         <div class="container">
@@ -1955,7 +2185,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Location</h4>
-                            <p>Bhopal, Madhya Pradesh, India</p>
+                            <p> Indore, Madhya Pradesh, India</p>
                         </div>
                     </div>
 
@@ -2123,32 +2353,6 @@
     <script defer>
         // Global configuration
         window.WEB3FORMS_KEY = "73b3f79f-75fc-4499-bd49-68891c76f8bd";
-
-        // Audio Management
-        function playMusic() {
-            const music = document.getElementById("bgMusic");
-            music.volume = 0.5;
-            music.play().catch(err => console.log("Playback failed:", err));
-            closeModal();
-            document.getElementById("muteToggle").style.display = "block";
-        }
-
-        function closeModal() {
-            document.getElementById("musicModal").style.display = "none";
-        }
-
-        function toggleMute() {
-            const music = document.getElementById("bgMusic");
-            const button = document.getElementById("muteToggle");
-            if (music.muted) {
-                music.muted = false;
-                button.textContent = "🔇 Mute";
-            } else {
-                music.muted = true;
-                button.textContent = "🔊 Unmute";
-            }
-        }
-
         // Optimized Theme Management
         class ThemeManager {
             constructor() {
@@ -2808,7 +3012,6 @@
 
             init() {
                 this.bindEvents();
-                this.setGreeting();
                 this.maybeAutoPeek();
             }
 
@@ -3006,5 +3209,33 @@
             });
         }
     </script>
+
+<div id="greeting-popup" style="position:fixed;inset:0;z-index:9999;display:flex;justify-content:center;align-items:center;background:linear-gradient(145deg,#f9fafb,#e5e7eb);font-family:'Poppins',sans-serif;animation:fadeIn 0.8s ease-out;">
+  <div style="max-width:480px;background:white;border-radius:1rem;padding:2.5rem 2rem;box-shadow:0 15px 40px rgba(0,0,0,0.1);text-align:center;">
+    <h1 style="font-size:2.4rem;margin-bottom:1rem;color:#1f2937;">Welcome, friend 👋</h1>
+    <p style="font-size:1.2rem;color:#4b5563;margin-bottom:2rem;">Your presence here means more than you know. Thank you for showing up.</p>
+    <button onclick="dismissGreeting()" style="background:#3b82f6;border:none;color:#fff;padding:0.75rem 1.5rem;font-size:1rem;border-radius:8px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:background 0.3s ease;">Let’s Dive In 🚀</button>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script>
+  function dismissGreeting() {
+    localStorage.setItem('visitedBefore', 'true');
+    document.getElementById('greeting-popup').style.display = 'none';
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('greeting-popup');
+    popup.style.display = localStorage.getItem('visitedBefore') ? 'none' : 'flex';
+  });
+</script>
+
+
 </body>
 </html>

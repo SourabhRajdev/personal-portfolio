@@ -18,12 +18,75 @@
 
   /* gradient */
 
-  
+  .popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #ffe9ec, #e0f7fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.popup-content {
+  background: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: popUp 0.7s ease-out;
+  max-width: 90%;
+}
+
+.popup-heading {
+  font-size: 2rem;
+  color: #222222;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.popup-subtext {
+  font-size: 1.2rem;
+  color: #555555;
+  margin-bottom: 1.5rem;
+}
+
+.popup-btn {
+  padding: 0.8rem 1.6rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.popup-btn:hover {
+  background-color: #005dc1;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popUp {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
 
   --bg-gradient-onyx: linear-gradient(
     to bottom right, 
     hsl(240, 1%, 25%) 3%, 
-    hsl(0, 0%, 19%) 97%
+    hsla(0, 23%, 39%, 1.00) 97%
   );
   --bg-gradient-jet: linear-gradient(
     to bottom right, 
