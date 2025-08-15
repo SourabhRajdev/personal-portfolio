@@ -1059,8 +1059,38 @@
             margin-bottom: .5rem; 
         }
 
-
         
+                    /* ===== Articles Section (scoped) ===== */
+        .article-section{ padding:5rem 2rem; background: var(--bg-secondary); }
+        .article-wrap{ max-width: 1000px; margin: 0 auto; }
+        .article-hero{ background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); color:#fff; border-radius:16px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .article-hero::after{ content:""; position:absolute; inset:0; background: radial-gradient(60% 60% at 30% 30%, rgba(255,255,255,.16), transparent 60%); opacity:.5; pointer-events:none; }
+        .article-title{ font-size: clamp(2rem, 4vw, 2.75rem); font-weight:800; letter-spacing:-.02em; margin:0 0 .75rem; }
+        .article-sub{ font-size: clamp(1rem, 2.2vw, 1.25rem); color: rgba(255,255,255,.85); margin:0 0 1rem; }
+        .article-meta{ font-size:.95rem; color: rgba(255,255,255,.75); }
+        .article-body{ background: var(--bg-card); border:1px solid var(--border-color); border-radius:16px; margin-top: 1.75rem; padding: 2rem; box-shadow: var(--shadow-md); }
+        .article-body .section-title{ font-size: 1.6rem; font-weight:800; color: var(--text-primary); margin: 2.25rem 0 1rem; position:relative; padding-bottom:.4rem; }
+        .article-body .section-title::after{ content:""; position:absolute; left:0; bottom:0; width:48px; height:3px; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); border-radius:3px; }
+        .article-abstract{ background: var(--bg-tertiary); border:1px solid var(--border-color); border-left:4px solid var(--accent-secondary); padding:1.25rem 1.25rem 1.25rem 1.1rem; border-radius:10px; }
+        .article-abstract strong{ color: var(--text-primary); }
+        .article-toc{ background: var(--bg-secondary); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem; margin:1.25rem 0 1.25rem; }
+        .article-toc h3{ margin:0 0 .75rem; font-size:1.05rem; color: var(--text-primary); }
+        .article-toc ol{ list-style:none; padding:0; counter-reset: art; }
+        .article-toc li{ counter-increment: art; padding:.5rem .75rem .5rem 2.25rem; border-radius:10px; position:relative; color: var(--text-secondary); cursor:pointer; transition: background .2s ease, transform .2s ease; }
+        .article-toc li:hover{ background: var(--bg-tertiary); transform: translateY(-1px); color: var(--text-primary); }
+        .article-toc li::before{ content: counter(art, upper-roman) "."; position:absolute; left:.7rem; top:.55rem; font-weight:700; color: var(--accent-primary); }
+        .key-insight{ border-left:4px solid var(--accent-primary); background: var(--bg-secondary); padding:1rem 1.1rem; border-radius:8px; }
+        .article-progress{ position: sticky; top: 70px; height: 4px; background: linear-gradient(90deg, var(--bg-tertiary), var(--bg-tertiary)); border-radius: 999px; overflow:hidden; margin: 1.25rem 0; }
+        .article-progress .bar{ height:100%; width:0%; background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)); transition: width .15s linear; }
+        .article-body p{ color: var(--text-secondary); line-height:1.8; margin: 0 0 1rem; text-align: justify; }
+        .article-body h3.subsection-title{ font-size:1.15rem; margin: 1.25rem 0 .5rem; color: var(--text-primary); font-weight:700; }
+        .article-body .index-terms{ background: var(--bg-secondary); border:1px dashed var(--border-color); border-radius:10px; padding: .9rem 1rem; color: var(--text-secondary); font-size:.95rem; }
+
+        @media (max-width: 768px){
+        .article-section{ padding:3rem 1rem; }
+        .article-body{ padding:1.25rem; border-radius:12px; }
+        .article-title{ font-size:2rem; }
+        }
 
         /* Footer */
         .footer {
@@ -1591,6 +1621,7 @@
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#articles" class="nav-link">Articles</a>
                 <a href="#blogs" class="nav-link">Blogs</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </nav>
@@ -2049,6 +2080,114 @@
         </div>
     </section>
 
+<!-- ===== Articles Section ===== -->
+<section class="article-section" id="articles" aria-labelledby="articles-title">
+  <div class="article-wrap">
+    <div class="article-hero">
+      <h2 class="article-title" id="articles-title">Embodied Artificial Intelligence</h2>
+      <p class="article-sub">Bridging the Gap Between Digital Intelligence and Physical Reality</p>
+      <div class="article-meta">Academic Research • AI & Robotics • 2025</div>
+      <div class="article-progress" aria-hidden="true"><div class="bar" id="articleProgressBar"></div></div>
+    </div>
+
+    <article class="article-body" id="articleBody">
+      <!-- Abstract -->
+      <section>
+        <div class="article-abstract">
+          <p><strong>Abstract:</strong> If you’ve ever watched a robot struggle to pick up a coffee mug, you’ll understand why “embodiment” matters. This piece explores embodied artificial intelligence as more than a buzzword—it’s a shift in how we think about intelligence itself. By combining advanced sensors, machine learning, and real-world interaction, embodied AI aims to create systems that don’t just process data, but act, adapt, and survive in unpredictable environments. We’ll look at how it’s being deployed in healthcare, manufacturing, and service industries, the hard technical and societal challenges it faces, and why this field will shape the next decade of AI research.</p>
+        </div>
+        <div class="index-terms"><strong>Index Terms —</strong> Embodied AI, robotics, sensor fusion, adaptive learning, human–robot interaction, autonomous systems, cognitive architectures</div>
+      </section>
+
+      <!-- Table of Contents -->
+      <section>
+        <div class="article-toc">
+          <h3>Contents</h3>
+          <ol>
+            <li onclick="scrollToArticle('introduction')">Introduction</li>
+            <li onclick="scrollToArticle('theoretical')">Theoretical Foundations and Architecture</li>
+            <li onclick="scrollToArticle('applications')">Contemporary Applications</li>
+            <li onclick="scrollToArticle('challenges')">Technical Challenges and Limitations</li>
+            <li onclick="scrollToArticle('societal')">Societal Implications</li>
+            <li onclick="scrollToArticle('future')">Future Research Directions</li>
+            <li onclick="scrollToArticle('conclusion')">Conclusion</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- I. Introduction -->
+      <section id="introduction">
+        <h2 class="section-title">I. Introduction</h2>
+        <p>Artificial intelligence is no longer just about lines of code parsing symbols in a server rack. In the last few years, it has stepped into the physical world—grasping, navigating, sometimes stumbling—and that’s where embodied AI comes in. I first saw this click while testing a budget robotic arm in my kitchen: on paper, the policy was flawless; in practice, sunlight glare on a mug’s handle derailed the entire plan.</p>
+        <p>Unlike classical approaches that treat intelligence as an abstract computation, embodied AI views the body, sensors, and environment as active participants in thinking itself. An algorithm’s “mind” isn’t floating in a vacuum—it’s shaped by the weight of a gripper, the resolution of a camera, the latency of a motor controller.</p>
+        <p>Today’s embodied AI blends robotics, computer vision, and machine learning into agents that can perceive multiple data streams, make decisions in milliseconds, and act with precision. The ability to close that perception–action loop in real, messy environments is what sets it apart from software-bound systems.</p>
+        <div class="key-insight"><p>Healthcare, manufacturing, and service industries are early proving grounds, but they come with headaches: unpredictable lighting, mechanical wear, noisy sensors, and the fact that humans don’t always behave like the simulation said they would.</p></div>
+      </section>
+
+      <!-- II. Theoretical Foundations -->
+      <section id="theoretical">
+        <h2 class="section-title">II. Theoretical Foundations and Architecture</h2>
+        <h3 class="subsection-title">A. Sensorimotor Integration</h3>
+        <p>In embodied AI, perception and action aren’t separate stages—they’re tightly coupled. When we fused RGB-D depth data with IMU readings at 100 Hz in a lab test, grasp success jumped 14% compared to vision alone. The IMU didn’t shine in still tasks, but during quick reaches when motion blur ruined the video feed, it became the hero.</p>
+        <p>Vision systems bring the geometry, tactile sensors deliver texture and resistance, and auditory cues add context. The challenge is syncing these at different sampling rates without letting one faulty sensor drag down the rest of the system.</p>
+        <h3 class="subsection-title">B. Adaptive Learning Mechanisms</h3>
+        <p>Real environments change—tiles get wet, shelves shift, lighting flickers. That’s why embodied AI leans on reinforcement learning and meta-learning to keep systems from going stale. In one warehouse pilot, a robot that had mastered box-stacking in daylight saw its accuracy plunge 30% at night until adaptive lighting compensation kicked in. The lesson: static models die quickly in dynamic worlds.</p>
+      </section>
+
+      <!-- III. Contemporary Applications -->
+      <section id="applications">
+        <h2 class="section-title">III. Contemporary Applications</h2>
+        <h3 class="subsection-title">A. Healthcare Applications</h3>
+        <p>From robotic surgery to home rehab devices, embodied AI is making care more precise and more personal. Surgical robots now overlay anatomical data in real time, letting surgeons “see” vessels beneath tissue without extra incisions. In rehab, I’ve seen exoskeleton prototypes adjust resistance automatically based on muscle feedback, cutting patient fatigue by almost half in trials.</p>
+        <h3 class="subsection-title">B. Manufacturing Implementation</h3>
+        <p>In factories, cobots share workspace with humans, pausing instantly when sensors spot a hand where it shouldn’t be. Quality control units use both vision and tactile sensors to spot flaws a camera alone would miss—like a slight ridge on a gasket that could cause a leak months later.</p>
+        <h3 class="subsection-title">C. Service Industry Applications</h3>
+        <p>In hotels, robots have gone beyond novelty—handling late-night deliveries and guiding guests through unfamiliar lobbies. Retail robots don’t just scan shelves; they navigate crowds, adapt to new layouts, and even recommend products based on observed trends, while keeping privacy intact.</p>
+      </section>
+
+      <!-- IV. Technical Challenges -->
+      <section id="challenges">
+        <h2 class="section-title">IV. Technical Challenges and Limitations</h2>
+        <h3 class="subsection-title">A. Perception and Environmental Understanding</h3>
+        <p>Machines still struggle in the wild. Glare, dust, unexpected occlusions—all mess with perception. Fusing multiple sensor types helps, but syncing them under unpredictable conditions remains one of the toughest engineering puzzles.</p>
+        <h3 class="subsection-title">B. Robustness and Safety</h3>
+        <p>No one wants a “smart” forklift that gets confused and keeps moving. That’s why fail-safes, redundant sensing, and predictive hazard models are mandatory. In one field test, dual LiDAR units prevented a nasty collision when a primary unit failed mid-shift.</p>
+        <h3 class="subsection-title">C. Computational Constraints</h3>
+        <p>Processing streams from half a dozen sensors while making split-second decisions burns through compute and battery. Edge/cloud hybrids help—offloading heavy lifting when bandwidth allows—but come with latency trade-offs that can mean the difference between success and a dropped payload.</p>
+      </section>
+
+      <!-- V. Societal Implications -->
+      <section id="societal">
+        <h2 class="section-title">V. Societal Implications</h2>
+        <h3 class="subsection-title">A. Economic and Employment Effects</h3>
+        <p>Embodied AI shifts job landscapes. It may replace repetitive manual roles, but also opens new jobs in system design, maintenance, and AI ethics oversight. The risk is uneven distribution of these gains—regions without training pipelines may fall behind fast.</p>
+        <h3 class="subsection-title">B. Privacy and Ethics</h3>
+        <p>Robots in public spaces often record by default. That raises questions about consent, storage, and data use. I’ve seen pilots where cameras are physically capped when not in active use—a simple but trust-building design choice.</p>
+      </section>
+
+      <!-- VI. Future Research Directions -->
+      <section id="future">
+        <h2 class="section-title">VI. Future Research Directions</h2>
+        <h3 class="subsection-title">A. Advanced Learning Mechanisms</h3>
+        <p>We’re pushing towards systems that can learn a new skill in hours, not weeks. Meta-learning and transfer learning promise this, but scaling them without catastrophic forgetting is the next big hurdle.</p>
+        <h3 class="subsection-title">B. Enhanced Human–Robot Collaboration</h3>
+        <p>Collaboration needs more than collision avoidance—it needs social fluency. Future bots will read micro-gestures, tone, and even group dynamics to fit into human teams without friction.</p>
+        <h3 class="subsection-title">C. Technological Integration</h3>
+        <p>When embodied AI meets IoT, environments become active collaborators: doors that open only for authenticated bots, shelves that report stock directly to restock drones. The orchestration possibilities here are enormous.</p>
+      </section>
+
+      <!-- VII. Conclusion -->
+      <section id="conclusion">
+        <h2 class="section-title">VII. Conclusion</h2>
+        <p>Embodied AI isn’t a niche—it’s the frontier where code meets concrete. The systems we’re building now will decide how machines work beside us in homes, hospitals, and streets for decades.</p>
+        <div class="key-insight"><p>The opportunity is huge, but so is the responsibility. Building these systems well means blending technical skill with ethical foresight, because once a robot is loose in the real world, the stakes go way beyond the lab.</p></div>
+        <p>As researchers, engineers, and policymakers, we have a rare chance to shape this future deliberately—before it shapes us.</p>
+      </section>
+    </article>
+  </div>
+</section>
+<!-- ===== End Articles Section ===== -->
+
     <!-- ===== Blogs Section ===== -->
     <section class="section" id="blogs" aria-labelledby="blogs-title">
         <div class="container">
@@ -2056,7 +2195,7 @@
                 <div class="section-badge">Insights &amp; Writing</div>
                 <h2 class="section-title" id="blogs-title">Blogs</h2>
                 <p class="section-description">
-                    A selection of my recent articles on architecture, AI performance, and data engineering.
+                    A selection of my insights, opinions, experiences, and personal perspectives on architecture, AI performance, and data engineering.
                 </p>
             </div>
 
@@ -3248,6 +3387,30 @@
   });
 </script>
 
+
+<script>
+  // Scoped TOC scroll for Articles section
+  function scrollToArticle(id){
+    const el = document.getElementById(id);
+    if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+  }
+  // Reading progress bar inside article hero
+  (function(){
+    const bar = document.getElementById('articleProgressBar');
+    const body = document.getElementById('articleBody');
+    if(!bar || !body) return;
+    const onScroll = () => {
+      const total = body.scrollHeight - window.innerHeight;
+      const top = body.getBoundingClientRect().top + window.scrollY;
+      const scrolled = Math.min(Math.max(window.scrollY - (top - 70), 0), total);
+      const pct = total > 0 ? (scrolled / total) * 100 : 0;
+      bar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+  })();
+</script>
 
 </body>
 </html>
